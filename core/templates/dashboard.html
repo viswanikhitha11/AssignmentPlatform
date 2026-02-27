@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h4>Welcome, {{ request.user.username }}</h4>
+            <p class="text-muted mb-0">
+                Role:
+                {% if request.user.is_staff %}
+                    <span class="badge bg-primary">Teacher</span>
+                {% else %}
+                    <span class="badge bg-success">Student</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4 text-center">
+            <h5>Quick Access</h5>
+            <a href="{% url 'assignment_list' %}" class="btn btn-outline-dark mt-2">
+                View Assignments
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

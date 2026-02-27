@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Grade Submission</h3>
+
+<div class="card p-4 col-md-6 shadow">
+<form method="post">
+{% csrf_token %}
+
+<p><b>Student:</b> {{ submission.student.username }}</p>
+
+<div class="mb-3">
+  <label>Marks</label>
+  <input type="number" name="grade"
+         value="{{ submission.grade }}"
+         class="form-control" required>
+</div>
+
+<div class="mb-3">
+  <label>Feedback</label>
+  <textarea name="feedback"
+    class="form-control"
+    rows="4">{{ submission.feedback }}</textarea>
+</div>
+
+<button class="btn btn-success">Save</button>
+</form>
+</div>
+
+{% endblock %}
